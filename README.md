@@ -29,7 +29,7 @@ This ready-to-run example integrates JFrog Artifactory and Xray into a CloudShel
 
 ## App setup
 
-Import the package Artifactory Example - CI-00.zip by dragging it into any screen of the CloudShell portal while logged in, or use this menu command and use the file chooser:
+Import the package Artifactory Example - CI-00.zip by dragging it into any screen of the CloudShell portal while logged in, or use this menu command:
 
 ![](screenshots/import-package.png)
 
