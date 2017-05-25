@@ -4,6 +4,17 @@
 
 This ready-to-run example integrates JFrog Artifactory and Xray into a CloudShell app deployment. The app runs on a VM and an artifact from Artifactory is deployed onto it by CloudShell, via an Ansible playbook. Certain builds of the artifact (site.zip) may be blocked by Xray, in which case the deployment fails and a detailed explanation is extracted with a link back to the Xray details page.
 
+The workflow is intended to be:
+
+- The user reserves a sandbox that contains an app to be deployed on a new VM with an artifact from Artifactory
+- The sandbox setup creates a new VM
+- The sandbox runs an Ansible playbook on the new VM
+- The Ansible playbook includes a Quali module that downloads the artifact from Artifactory, checks for Xray errors, and reports
+
+The Ansible playbook is intended to be customized for each application and executed by CloudShell during deployment. As long as the playbook calls the Quali module, with a number of standard inputs automatically passed from CloudShell, the artifact will be ready on the VM for custom Ansible installation steps. 
+
+In this example, the installation consists of unzipping the artifact, site.zip, into the Nginx web root folder.
+
 
 ## Prerequisites
 
