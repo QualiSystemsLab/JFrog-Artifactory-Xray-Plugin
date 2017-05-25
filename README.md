@@ -1,12 +1,23 @@
 # JFrog-Artifactory-Xray-Plugin
 
+## Overview
+
+This ready-to-run example integrates JFrog Artifactory and Xray into a CloudShell app deployment. The app runs on a VM and an artifact from Artifactory is deployed onto it by CloudShell, via an Ansible playbook. Certain builds of the artifact (site.zip) may be blocked by Xray, in which case the deployment fails and a detailed explanation is extracted with a link back to the Xray details page.
+
+
+## Prerequisites
+
+- CloudShell 8.0 or higher
+- Quali Linux execution server from the Quali download center
+
+
 ## Critical installation steps
 
 - On the Quali Linux execution server appliance, run:
 
       yum install ansible
 
-- Copy QSArtifactory.py to:
+- Copy AnsibleModule/QSArtifactory.py to:
 
       /usr/lib/python2.7/site-packages/ansible/modules/QSArtifactory.py
 
