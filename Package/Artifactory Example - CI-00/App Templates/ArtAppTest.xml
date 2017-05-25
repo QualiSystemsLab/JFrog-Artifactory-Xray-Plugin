@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppTemplateInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AppResourceInfo Name="ArtAppTest">
+    <AppResources>
+      <AppResource ModelName="ArtApp" Driver="">
+        <Attributes>
+          <Attribute Name="Password" Value="R23A0HitnA2HYsOuahCExw==" />
+          <Attribute Name="User" Value="root" />
+        </Attributes>
+      </AppResource>
+    </AppResources>
+    <ConfigurationManagement>
+      <Ansible ConnectionMethod="SSH" InventoryGroups="Art">
+        <Repository Url="https://raw.githubusercontent.com/Omritk/Test/master/QSArtifactoryPlaybook.yml" UserName="" />
+        <Parameters>
+          <Parameter Name="ArtifactoryIP" Value="AUTO" />
+          <Parameter Name="ArtifactoryUsername" Value="AUTO" />
+          <Parameter Name="ArtifactoryPassword" Value="AUTO" />
+          <Parameter Name="FileName" Value="site.zip" />
+          <Parameter Name="ArtifactoryRepo" Value="CloudShell-Live-CI" />
+          <Parameter Name="XrayIP" Value="AUTO" />
+          <Parameter Name="XrayUsername" Value="AUTO" />
+          <Parameter Name="XrayPassword" Value="AUTO" />
+          <Parameter Name="BuildID" Value="AUTO" />
+        </Parameters>
+      </Ansible>
+    </ConfigurationManagement>
+    <DeploymentPaths>
+      <DeploymentPath Name="vc110 - vCenter VM From Template" Default="false">
+        <DeploymentService Name="vCenter VM From Template" CloudProvider="vc110">
+          <Attributes>
+            <Attribute Name="vCenter Template" Value="Do./Do-Template-CentOS-7" />
+            <Attribute Name="VM Cluster" Value="" />
+            <Attribute Name="VM Storage" Value="" />
+            <Attribute Name="VM Resource Pool" Value="" />
+            <Attribute Name="VM Location" Value="" />
+            <Attribute Name="Auto Power On" Value="True" />
+            <Attribute Name="Auto Power Off" Value="True" />
+            <Attribute Name="Wait for IP" Value="True" />
+            <Attribute Name="Auto Delete" Value="True" />
+            <Attribute Name="Autoload" Value="True" />
+            <Attribute Name="IP Regex" Value="" />
+            <Attribute Name="Refresh IP Timeout" Value="600" />
+          </Attributes>
+        </DeploymentService>
+      </DeploymentPath>
+    </DeploymentPaths>
+  </AppResourceInfo>
+  <Categories>
+    <Category>Applications</Category>
+  </Categories>
+</AppTemplateInfo>

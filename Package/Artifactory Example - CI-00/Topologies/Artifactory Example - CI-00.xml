@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TopologyInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Details Name="Artifactory Example - CI-00" Alias="Artifactory Example - CI-00" Driver="Python Setup &amp; Teardown" SetupDuration="10" TeardownDuration="10" Public="false" DefaultDuration="120">
+    <Description>Blueprint with preconfigured setup &amp; teardown processes.Deploys Apps and resolves connections on Setup, and deletes App VMs on Teardown</Description>
+    <Categories />
+    <Scripts>
+      <Script Name="ArtSetupScript" />
+      <Script Name="Default Sandbox Teardown" />
+    </Scripts>
+    <Diagram Zoom="1" NodeSize="Medium" />
+  </Details>
+  <Apps>
+    <App PositionX="460" PositionY="133" TemplateName="ArtAppTest">
+      <AppResourceInfo Name="ArtAppTest">
+        <AppResources>
+          <AppResource ModelName="ArtApp" Driver="">
+            <Attributes>
+              <Attribute Name="Password" Value="R23A0HitnA2HYsOuahCExw==" />
+              <Attribute Name="User" Value="root" />
+            </Attributes>
+          </AppResource>
+        </AppResources>
+        <ConfigurationManagement>
+          <Ansible ConnectionMethod="SSH" InventoryGroups="Art">
+            <Repository Url="https://raw.githubusercontent.com/Omritk/Test/master/QSArtifactoryPlaybook.yml" UserName="" />
+            <Parameters>
+              <Parameter Name="ArtifactoryIP" Value="AUTO" />
+              <Parameter Name="ArtifactoryUsername" Value="AUTO" />
+              <Parameter Name="ArtifactoryPassword" Value="AUTO" />
+              <Parameter Name="FileName" Value="site.zip" />
+              <Parameter Name="ArtifactoryRepo" Value="CloudShell-Live-CI" />
+              <Parameter Name="XrayIP" Value="AUTO" />
+              <Parameter Name="XrayUsername" Value="AUTO" />
+              <Parameter Name="XrayPassword" Value="AUTO" />
+              <Parameter Name="BuildID" Value="AUTO" />
+            </Parameters>
+          </Ansible>
+        </ConfigurationManagement>
+        <DeploymentPaths>
+          <DeploymentPath Name="vc110 - vCenter VM From Template" Default="true">
+            <DeploymentService Name="vCenter VM From Template" CloudProvider="vc110">
+              <Attributes>
+                <Attribute Name="vCenter Template" Value="Do./Do-Template-CentOS-7" />
+                <Attribute Name="VM Cluster" Value="" />
+                <Attribute Name="VM Storage" Value="" />
+                <Attribute Name="VM Resource Pool" Value="" />
+                <Attribute Name="VM Location" Value="" />
+                <Attribute Name="Auto Power On" Value="True" />
+                <Attribute Name="Auto Power Off" Value="True" />
+                <Attribute Name="Wait for IP" Value="True" />
+                <Attribute Name="Auto Delete" Value="True" />
+                <Attribute Name="Autoload" Value="True" />
+                <Attribute Name="IP Regex" Value="" />
+                <Attribute Name="Refresh IP Timeout" Value="600" />
+              </Attributes>
+            </DeploymentService>
+          </DeploymentPath>
+        </DeploymentPaths>
+      </AppResourceInfo>
+    </App>
+  </Apps>
+</TopologyInfo>
