@@ -40,7 +40,11 @@ In this example, the installation consists of unzipping the artifact, site.zip, 
 
 ## App setup
 
-Import the package Artifactory Example - CI-00.zip by dragging it into any screen of the CloudShell portal while logged in, or use this menu command:
+Clone this repository to your local machine.
+
+Go into Package/ and follow the instructions for creating Artifactory Example - CI-00.zip.
+
+Import the package Artifactory Example - CI-00.zip into CloudShell by dragging it into any screen of the CloudShell portal while logged in, or with this menu command:
 
 ![](screenshots/import-package.png)
 
