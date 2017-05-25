@@ -20,6 +20,7 @@ In this example, the installation consists of unzipping the artifact, site.zip, 
 
 - CloudShell 8.0 or higher
 - Quali Linux execution server from the Quali download center
+- VM deployment with a supported cloud provider (e.g. vSphere, AWS, Azure, OpenStack) working in CloudShell
 
 
 ## Critical installation steps
@@ -42,9 +43,9 @@ In this example, the installation consists of unzipping the artifact, site.zip, 
 
 Clone this repository to your local machine.
 
-Go into Package/ and follow the instructions for creating Artifactory Example - CI-00.zip.
+Go into Package/ and follow the instructions for creating Artifactory Example - CI-00.zip and support objects.zip
 
-Import the package Artifactory Example - CI-00.zip into CloudShell by dragging it into any screen of the CloudShell portal while logged in, or with this menu command:
+Import the packages Artifactory Example - CI-00.zip and support objects.zip into CloudShell by dragging it into any screen of the CloudShell portal while logged in, or with this menu command:
 
 ![](screenshots/import-package.png)
 

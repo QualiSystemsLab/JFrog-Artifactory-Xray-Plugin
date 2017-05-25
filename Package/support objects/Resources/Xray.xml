@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ResourceInfo xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Xray" FolderFullPath="" Address="35.160.190.197" ModelName="Xray" xmlns="http://schemas.qualisystems.com/ResourceManagement/ResourceSchema.xsd">
+  <Attributes>
+    <Attribute Name="Password" Value="6dA6F7TjPxhraZWlNQ7n4A==" />
+    <Attribute Name="User" Value="admin" />
+  </Attributes>
+  <ChildResources />
+  <Connections />
+</ResourceInfo>
