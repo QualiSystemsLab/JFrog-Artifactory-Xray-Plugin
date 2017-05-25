@@ -1,0 +1,1 @@
+# JFrog-Artifactory-Xray-Plugin
