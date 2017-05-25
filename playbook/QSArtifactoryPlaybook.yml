@@ -1,0 +1,57 @@
+
+- name: Install Dependencies
+  hosts: all
+  tasks:
+
+  #####################################################
+  # Change to fit your application
+   - name: Install Nginx
+     yum:
+      name: nginx
+      state: latest
+
+   - name: Starting nginx service
+     service: name=nginx state=started
+  #
+  #####################################################
+
+
+  #####################################################
+  # Begin Quali integration with Artifactory and Xray
+   - name: Install Curl2
+     yum:
+      name: curl
+      state: latest
+
+   - name: Install Pip
+     yum:
+      name: python-pip
+      state: latest
+
+   - name: Install Python Requests
+     pip:
+      name: requests
+      state: present
+
+   - name: Download from Artifactory
+     QSArtifactory:
+      build_id: "{{BuildID}}"
+      artifactory_ip: "{{ArtifactoryIP}}"
+      artifactory_username: "{{ArtifactoryUsername}}"
+      artifactory_password: "{{ArtifactoryPassword}}"
+      file_name: "{{FileName}}"
+      artifact_repo: "{{ArtifactoryRepo}}"
+      xray_ip: "{{XrayIP}}"
+      xray_username: "{{XrayUsername}}"
+      xray_password: "{{XrayPassword}}"
+   # End Quali integration with Artifactory and Xray
+   ###################################################
+
+
+   ######################################
+   # Change to fit your application
+   - name: Run Installation
+     unarchive:
+       src: "/tmp/{{FileName}}"
+       dest: /usr/share/nginx/html
+       remote_src: yes
