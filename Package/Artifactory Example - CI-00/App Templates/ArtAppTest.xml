@@ -11,7 +11,7 @@
     </AppResources>
     <ConfigurationManagement>
       <Ansible ConnectionMethod="SSH" InventoryGroups="Art">
-        <Repository Url="https://raw.githubusercontent.com/Omritk/Test/master/QSArtifactoryPlaybook.yml" UserName="" />
+        <Repository Url="https://raw.githubusercontent.com/QualiSystemsLab/JFrog-Artifactory-Xray-Plugin/master/playbook/QSArtifactoryPlaybook.yml" UserName="" />
         <Parameters>
           <Parameter Name="ArtifactoryIP" Value="AUTO" />
           <Parameter Name="ArtifactoryUsername" Value="AUTO" />
