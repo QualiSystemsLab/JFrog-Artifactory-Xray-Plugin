@@ -75,7 +75,7 @@ Select a deployment type and configure the cloud provider details for your syste
 
 #### Under Configuration Management:
 
-Set the Playbook Location URL to the full URL of a *.yml playbook file, for example https://raw.githubusercontent.com/Omritk/Test/master/QSArtifactoryPlaybook.yml. If the URL is password protected, enter the User and Password; otherwise leave them blank. In order to use the CloudShell integration with Artifactory and Xray, create a playbook based on the sample QSArtifactoryPlaybook.yml. 
+Set the Playbook Location URL to the full URL of a *.yml playbook file, for example https://raw.githubusercontent.com/QualiSystemsLab/JFrog-Artifactory-Xray-Plugin/master/playbook/QSArtifactoryPlaybook.yml. If the URL is password protected, enter the User and Password; otherwise leave them blank. In order to use the CloudShell integration with Artifactory and Xray, create a playbook based on the sample QSArtifactoryPlaybook.yml. 
 
 ![](screenshots/configuration-management.png)
 
