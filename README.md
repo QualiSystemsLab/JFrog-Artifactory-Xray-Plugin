@@ -45,7 +45,7 @@ Clone this repository to your local machine.
 
 Go into Package/ and follow the instructions for creating Artifactory Example - CI-00.zip and support objects.zip
 
-Import the packages Artifactory Example - CI-00.zip and support objects.zip into CloudShell by dragging it into any screen of the CloudShell portal while logged in, or with this menu command:
+Import the packages Artifactory Example - CI-00.zip and support objects.zip into CloudShell by dragging them into any screen of the CloudShell portal while logged in, or with this menu command:
 
 ![](screenshots/import-package.png)
 
@@ -91,7 +91,7 @@ Leave all AUTO fields as AUTO. They will be overwritten dynamically during deplo
 
 #### Under App Resource:
 
-Select the resource model that will created to represent the deployed VM. Be sure to set User and Password: they are needed by Ansible to log in to the new VM. Note: When defining a custom resource model in Resource Manager, you must attach the User and Password attributes to it.
+Select the resource model for the deployed VM resource. Be sure to set User and Password: they are needed by Ansible to log in to the new VM. Note: When defining a custom resource model in Resource Manager, you must attach the User and Password attributes to it.
 
 ![](screenshots/app-resource.png)
 
