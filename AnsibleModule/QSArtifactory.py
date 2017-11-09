@@ -6,7 +6,7 @@ import requests
 
 class Artifactory():
 
-    def __init__(self, build_id, artifactory_ip, artifactory_username, artifactory_password, file_name, artifact_repo                                                                                                                        , xray_ip='', xray_username='', xray_password=''):
+    def __init__(self, build_id, artifactory_ip, artifactory_username, artifactory_password, file_name, artifact_repo, xray_ip='', xray_username='', xray_password=''):
 
         self.build_id = build_id
         self.artifactory_ip = artifactory_ip
@@ -43,7 +43,7 @@ class Artifactory():
 
     def _download_artifact(self):
         # Should run locally on the App
-        artifact_url = 'http://{art_ip}:8081/artifactory/{repo}/{build}/{file}'.format(art_ip=self.artifactory_ip, re                                                                                                                        po=self.artifact_repo, build=self.build_id, file=self.file_name)
+        artifact_url = 'http://{art_ip}:8081/artifactory/{repo}/{build}/{file}'.format(art_ip=self.artifactory_ip, repo=self.artifact_repo, build=self.build_id, file=self.file_name)
         commands = [
             'curl',
             '-v',
@@ -60,18 +60,18 @@ class Artifactory():
             code = int(code)
             return code, text
         else:
-            url = 'http://{artifact_url}:8081/artifactory/webapp/#/artifacts/browse/tree/General/{repo}/{build}/{file                                                                                                                        }'.format(artifact_url=self.artifactory_ip, repo=self.artifact_repo, build=self.build_id, file=self.file_name)
+            url = 'http://{artifact_url}:8081/artifactory/webapp/#/artifacts/browse/tree/General/{repo}/{build}/{file}'.format(artifact_url=self.artifactory_ip, repo=self.artifact_repo, build=self.build_id, file=self.file_name)
             msg = "Error downloading the artifact. Error: {}\nOutput: {}\nCheck URL: {}".format(err, output, url)
             # raise Exception(msg)
             return 500, msg
 
     def _get_failed_reason(self, text):
 
-        artifact_url = 'http://{art_url}:8081/artifactory/api/storage/{repo}/{build}/{file}'.format(art_url=self.arti                                                                                                                        factory_ip, repo=self.artifact_repo, build=self.build_id, file=self.file_name)
+        artifact_url = 'http://{art_url}:8081/artifactory/api/storage/{repo}/{build}/{file}'.format(art_url=self.artifactory_ip, repo=self.artifact_repo, build=self.build_id, file=self.file_name)
 
-        csj = json.loads(requests.get(artifact_url, auth=(self.artifactory_username, self.artifactory_password)).text                                                                                                                        )
+        csj = json.loads(requests.get(artifact_url, auth=(self.artifactory_username, self.artifactory_password)).text)
         if 'checksums' not in csj or 'sha1' not in csj['checksums']:
-            msg = "Failure downloading artifact from '{artifact_url}': {error}\nThe build id '{build_id}' may be inva                                                                                                                        lid.".format(artifact_url=artifact_url, error=text, build_id=self.build_id)
+            msg = "Failure downloading artifact from '{artifact_url}': {error}\nThe build id '{build_id}' may be invalid.".format(artifact_url=artifact_url, error=text, build_id=self.build_id)
             return msg
         checksum = csj['checksums']['sha1']
 
@@ -85,7 +85,7 @@ class Artifactory():
                           headers={'Content-Type': 'application/json'},
                           auth=(self.artifactory_username, self.artifactory_password))
         if r.status_code >= 400:
-            msg = 'Deployment of artifact id {build} failed; Check Xray: {xray_error}'.format(build=self.build_id, xr                                                                                                                        ay_error=r.text)
+            msg = 'Deployment of artifact id {build} failed; Check Xray: {xray_error}'.format(build=self.build_id, xray_error=r.text)
             return msg
         oreason = json.loads(r.text)
         reason = ''
@@ -103,7 +103,7 @@ class Artifactory():
                     issue['summary'],
                     issue['description'])
 
-        url = 'http://{artifact_url}:8081/artifactory/webapp/#/artifacts/browse/tree/General/{repo}/{build}/{file}'.f                                                                                                                        ormat(
+        url = 'http://{artifact_url}:8081/artifactory/webapp/#/artifacts/browse/tree/General/{repo}/{build}/{file}'.format(
             artifact_url=self.artifactory_ip, repo=self.artifact_repo, build=self.build_id, file=self.file_name)
         msg = "JFrog Xray found issue: {}\nCheck URL: {}".format(reason, url)
 
@@ -138,7 +138,7 @@ def main():
 
     out = {}
     try:
-        art = Artifactory(build_id, artifactory_ip, artifactory_username, artifactory_password, file_name, artifact_r                                                                                                                        epo, xray_ip, xray_username, xray_password)
+        art = Artifactory(build_id, artifactory_ip, artifactory_username, artifactory_password, file_name, artifact_repo, xray_ip, xray_username, xray_password)
         result = art.workflow()
         out['Success'] = 'Artifactory operations complete: {}'.format(result)
     except Exception, e:
